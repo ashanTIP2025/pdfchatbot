@@ -1,0 +1,8 @@
+define bot inform pii detected
+  "I noticed your message contains personal information (such as a name, email, phone number, or ID number). Please remove any sensitive data before asking your question."
+
+define flow detect sensitive data on input
+  $is_sensitive = execute detect_sensitive_data_on_input
+  if $is_sensitive
+    bot inform pii detected
+    stop
